@@ -1,5 +1,13 @@
 const books = require('../router/booksdb.js')
+const express = require('express');
+const router = express.Router();
 
+// Define routes
+router.get('/', getAllBooks);
+router.get('/:isbn', getBookByISBN);
+router.get('/author/:author', getBookByAuthor);
+router.get('/title/:title', getBookByTitle);
+router.get('/review/:isbn', getBookReview);
 /*
  * Controller Folder handling routes and functions (logics??) such as fetching values.  
  */
@@ -11,6 +19,7 @@ const dataFetch = (data) => {
         }, 1000)
     })
 }
+
 
 function getAllBooks(req, res) {
     try {
@@ -100,4 +109,4 @@ function getBookReview(req, res) {
 
 
 
-module.exports = { getAllBooks, getBookByISBN, getBookByAuthor, getBookByTitle, getBookReview, dataFetch }; 
+module.exports = { router, getAllBooks, getBookByISBN, getBookByAuthor, getBookByTitle, getBookReview }; 

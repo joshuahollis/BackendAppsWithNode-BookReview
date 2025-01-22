@@ -26,9 +26,34 @@ app.use("/customer/auth/*", function auth(req, res, next) {
     }
 });
 
-const PORT = 5000;
+const PORT = 5001;
 
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
 
-app.listen(PORT, () => console.log("Server is running"));
+app.listen(PORT, () => console.log('Server is running on http://localhost:5001'));
+
+
+// const express = require('express');
+// const session = require('express-session');
+// const bodyParser = require('body-parser');
+// const { authenticated } = require('./regd_users'); // Importing the user routes
+
+// const app = express();
+// const port = 3000;
+
+// // Middleware
+// app.use(bodyParser.json());
+// app.use(session({
+//   secret: 'secret',
+//   resave: false,
+//   saveUninitialized: true,
+// }));
+
+// // Use the routes for user authentication and reviews
+// app.use('/auth', authenticated);
+
+// // Start the server
+// app.listen(port, () => {
+//   console.log(`Server running at http://localhost:${port}`);
+// });///
